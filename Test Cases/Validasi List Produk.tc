@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Testing validasi list produk</description>
+   <name>Validasi List Produk</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>5fc853cb-7f68-4171-8979-9524c98927bb</testCaseGuid>
+</TestCaseEntity>
