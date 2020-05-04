@@ -14,37 +14,14 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
-import org.openqa.selenium.Keys as Keys
 
 WebUI.openBrowser('')
 
 WebUI.navigateToUrl('http://localhost/tokobuah/index.php/admin/login')
 
-WebUI.setText(findTestObject('Page_Login Admin/input_Email_email'), 'dian')
+WebUI.setText(findTestObject('Page_Login Admin/input_Email_email'), username)
 
-WebUI.setEncryptedText(findTestObject('Page_Login Admin/input_Password_password'), 'MMS/zmTQxAM=')
+WebUI.setEncryptedText(findTestObject('Page_Login Admin/input_Password_password'), password)
 
 WebUI.click(findTestObject('Page_Login Admin/input_Lupa Password_btn btn-success w-100'))
-
-String expectedValue = 'Melati'
-
-WebDriver driver = DriverFactory.getWebDriver()
-
-WebElement Table = driver.findElement(By.xpath('//table/tbody'))
-
-List<WebElement> Rows = Table.findElements(By.tagName('tr'))
-
-println('No. of rows: ' + Rows.size())
-
-table: for (int i = 0; i < Rows.size(); i++) {
-    List<WebElement> Cols = Rows.get(i).findElements(By.tagName('td'))
-
-    for (int j = 0; j < Cols.size(); j++) {
-        if (Cols.get(j).getText().equalsIgnoreCase(expectedValue)) {
-            WebUI.comment(('kata ' + expectedValue) + ' ada')
-
-            break
-        }
-    }
-}
 

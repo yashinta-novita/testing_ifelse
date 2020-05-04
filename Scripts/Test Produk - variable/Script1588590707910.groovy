@@ -14,7 +14,6 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
-import org.openqa.selenium.Keys as Keys
 
 WebUI.openBrowser('')
 
@@ -26,25 +25,21 @@ WebUI.setEncryptedText(findTestObject('Page_Login Admin/input_Password_password'
 
 WebUI.click(findTestObject('Page_Login Admin/input_Lupa Password_btn btn-success w-100'))
 
-String expectedValue = 'Melati'
+WebUI.click(findTestObject('Object Repository/Page_Tokobuah Admin -/a_Products'))
 
-WebDriver driver = DriverFactory.getWebDriver()
+WebUI.click(findTestObject('Object Repository/Page_Tokobuah Admin -/a_New Product'))
 
-WebElement Table = driver.findElement(By.xpath('//table/tbody'))
+WebUI.setText(findTestObject('Object Repository/Page_Tokobuah Admin - Products/input_Name_name'), product)
 
-List<WebElement> Rows = Table.findElements(By.tagName('tr'))
+WebUI.setText(findTestObject('Object Repository/Page_Tokobuah Admin - Products/input_Price_price'), price)
 
-println('No. of rows: ' + Rows.size())
+WebUI.setText(findTestObject('Object Repository/Page_Tokobuah Admin - Products/textarea_Description_description'), description)
 
-table: for (int i = 0; i < Rows.size(); i++) {
-    List<WebElement> Cols = Rows.get(i).findElements(By.tagName('td'))
+WebUI.uploadFile(findTestObject('Page_Tokobuah Admin - Products/input_Photo_image'), 'C:\\Users\\adria\\OneDrive\\Pictures\\Foto_Adr_UKDW_2')
 
-    for (int j = 0; j < Cols.size(); j++) {
-        if (Cols.get(j).getText().equalsIgnoreCase(expectedValue)) {
-            WebUI.comment(('kata ' + expectedValue) + ' ada')
+WebUI.click(findTestObject('Object Repository/Page_Tokobuah Admin - Products/input_Description_btn'))
 
-            break
-        }
-    }
-}
+WebUI.verifyElementText(findTestObject('Page_Tokobuah Admin - Products/div_Berhasil disimpan'), 'Berhasil disimpan')
+
+WebUI.verifyElementText(findTestObject(null), '')
 
